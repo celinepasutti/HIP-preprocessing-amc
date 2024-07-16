@@ -4,6 +4,8 @@ parsed_amc = ParseAMC("C://coding//mocapPlayer//79_01.amc")
 
 def batching(amc, batch_size):
     batched_arr = []
+    num_batch = len(parsed_amc) / batch_size
+    remainder = len(parsed_amc) % batch_size
     for frame in amc:
         frame_arr = []
         for feature in frame:
