@@ -2,16 +2,16 @@ from asfamcparser import ParseAMC
 
 parsed_amc = ParseAMC("C://coding//mocapPlayer//79_01.amc")
 
-arr = []
+def batching(amc, batch_size):
+    batched_arr = []
+    for frame in amc:
+        frame_arr = []
+        for feature in frame:
+            for f in frame[feature]:
+                frame_arr.append(f)
+        batched_arr.append(frame_arr)
 
-for frame in parsed_amc.amc:
-    frame_arr = []
-    for feature in frame:
-        for f in frame[feature]:
-            frame_arr.append(f)
+    return batched_arr
 
-    arr.append(frame_arr)
 
-print(arr)
-print(len(arr))
-print(len(arr[0]))
+print(batching(parsed_amc.amc, 32))
