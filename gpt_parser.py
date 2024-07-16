@@ -1,19 +1,13 @@
 from asfamcparser import ParseAMC
 import math
 import torch
+import os
 
-folder_path = 
+folder_path = "C://coding//HIP-preprocessing-amc//mocapPlayer"
 
 batch_size = 32
 
 master_list = []
-
-for filename in os.listdir(folder_path)
-    if filename.endswith(".amc")
-        file_path = os.path.join(folder_path, filename)
-        parsed_amc = ParseAMC(file_path)
-        batching(parsed_amc, batch_size)
-
 
 def batching(amc, batch_size):
     flattened_frames = []
@@ -43,13 +37,15 @@ def batching(amc, batch_size):
         
         batched_arr.append(batch)
     
-    master_list = master_list.append(batched_arr)
+    master_list.extend(batched_arr)
+
+for filename in os.listdir(folder_path):
+    if filename.endswith(".amc"):
+        file_path = os.path.join(folder_path, filename)
+        parsed_amc = ParseAMC(file_path).amc
+        batching(parsed_amc, batch_size)
 
 
-tensor =  torch.Tensor(master_list)
+a_tensor =  torch.tensor(master_list)
 
-print(tensor.shape)
-
-
-
-print(len(batching(parsed_amc.amc, 32)[19]))
+print(a_tensor.shape)
