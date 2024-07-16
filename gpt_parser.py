@@ -27,7 +27,7 @@ def batching(amc, batch_size):
         # Check if padding is needed for the last batch
         if len(batch) < batch_size:
             padding_needed = batch_size - len(batch)
-            batch.extend(flattened_frames[:padding_needed])
+            batch = flattened_frames[:padding_needed] + batch
         
         batched_arr.append(batch)
     
