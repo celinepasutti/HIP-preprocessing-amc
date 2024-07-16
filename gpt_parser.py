@@ -16,7 +16,7 @@ def batching(amc, batch_size):
 
     batched_arr = []
     total_frames = len(flattened_frames)
-    num_batches = math.ceil(total_frames // batch_siz)e  # Calculate number of batches
+    num_batches = math.ceil(total_frames // batch_size)  # Calculate number of batches
 
     # Create batches with padding for the last batch if necessary
     for i in range(num_batches):
