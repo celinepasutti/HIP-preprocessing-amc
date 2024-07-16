@@ -1,5 +1,6 @@
 from asfamcparser import ParseAMC
 import math
+import torch
 
 folder_path = 
 
@@ -43,6 +44,11 @@ def batching(amc, batch_size):
         batched_arr.append(batch)
     
     master_list = master_list.append(batched_arr)
+
+
+tensor =  torch.Tensor(master_list)
+
+print(tensor.shape)
 
 
 
