@@ -28,22 +28,15 @@ def batching(amc, batch_size):
     for i in range(num_batches):
         start_idx = i * batch_size
         end_idx = start_idx + batch_size
-        if i == num_batches - 1:
-            batch = flattened_frames[-batch_size:]
-            if len(batch) != batch_size:
-                print("NOOOO")
-        else:
-            batch = flattened_frames[start_idx:end_idx]
-            if len(batch) != batch_size:
-                print("NOOOO")
+        batch = flattened_frames[start_idx:end_idx]
         
-        """
         # Check if padding is needed for the last batch
         if len(batch) < batch_size:
             padding_needed = batch_size - len(batch)
-            batch = flattened_frames[:padding_needed] + batch
+            # batch = flattened_frames[:padding_needed] + batch
+            batch.extend(flattened_frames[:padding_needed])
         
-        """
+        
         batched_arr.append(batch)
     
     master_list.extend(batched_arr)
