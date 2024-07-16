@@ -1,4 +1,5 @@
 from asfamcparser import ParseAMC
+import math
 
 parsed_amc = ParseAMC("C://coding//mocapPlayer//79_01.amc")
 
@@ -15,7 +16,7 @@ def batching(amc, batch_size):
 
     batched_arr = []
     total_frames = len(flattened_frames)
-    num_batches = (total_frames + batch_size - 1) // batch_size  # Calculate number of batches
+    num_batches = math.ceil(total_frames // batch_siz)e  # Calculate number of batches
 
     # Create batches with padding for the last batch if necessary
     for i in range(num_batches):
