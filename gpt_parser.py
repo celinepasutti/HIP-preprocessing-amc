@@ -1,7 +1,18 @@
 from asfamcparser import ParseAMC
 import math
 
-parsed_amc = ParseAMC("C://coding//mocapPlayer//79_01.amc")
+folder_path = 
+
+batch_size = 32
+
+master_list = []
+
+for filename in os.listdir(folder_path)
+    if filename.endswith(".amc")
+        file_path = os.path.join(folder_path, filename)
+        parsed_amc = ParseAMC(file_path)
+        batching(parsed_amc, batch_size)
+
 
 def batching(amc, batch_size):
     flattened_frames = []
@@ -31,6 +42,8 @@ def batching(amc, batch_size):
         
         batched_arr.append(batch)
     
-    return batched_arr
+    master_list = master_list.append(batched_arr)
+
+
 
 print(len(batching(parsed_amc.amc, 32)[19]))
